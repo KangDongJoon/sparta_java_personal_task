@@ -21,15 +21,25 @@ public class App {
         // switch(val) : val값에 따라 case별 명령어를 수행
         int result = 0;
         switch (sym) {
-            case '+' : result = num1 + num2;
+            case '+':
+                result = num1 + num2;
                 break;
-            case '-' : result = num1 - num2;
+            case '-':
+                result = num1 - num2;
                 break;
-            case '*' : result = num1 * num2;
+            case '*':
+                result = num1 * num2;
                 break;
-            case '/' : result = num1 / num2;
+            case '/':
+                if (num2 == 0) {
+                    System.out.println("0으로 나눌 수 없습니다. 두 번째 숫자를 0이아닌 다른값으로 입력해 주세요/");
+                }else{
+                    result = num1 / num2;
+                }
                 break;
-        }
+            default :
+                System.out.println("사칙연산 기호를 잘못 입력하셨습니다[+, -, *, /] 4개중 하나를 입력해주세요.");
+        };
         System.out.println("결과: " + result);
     }
 }
