@@ -54,6 +54,15 @@ public class App {
             arr[index] = result;
             index++;
 
+            // 마지막 인덱스는 9이다. 만약 index가 증가 후 10이 되버리면 배열을 한칸씩 당기고 다음 결과값을 다시 9의 위치에 대입한다.
+            if(index > arr.length - 1){
+                index = 9;
+                // 배열을 초과하여 입력할 때 ex) arr[0] = arr[1] 이런식으로 한칸씩 당긴다.
+                for(int i = 0; i < arr.length - 1; i++){
+                    arr[i] = arr[i + 1];
+                }
+            }
+
             System.out.println("더 계산하시겠습니까? (exit 입력 시 종료)");
             input = sc.next();
         }while (!input.equals("exit"));
