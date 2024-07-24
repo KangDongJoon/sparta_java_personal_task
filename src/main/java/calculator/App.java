@@ -80,6 +80,12 @@ public class App {
             → Level-7번을 위해 주석처리
              */
 
+            System.out.println("저장된 연산결과를 조회하시겠습니까? (inquiry 입력 시 조회)");
+            input = sc.next();
+            if(input.equals("inquiry")){
+                System.out.println(Arrays.toString(li.toArray()));
+            }
+
             System.out.println("더 계산하시겠습니까? (exit 입력 시 종료)");
             input = sc.next();
         }while (!input.equals("exit"));
