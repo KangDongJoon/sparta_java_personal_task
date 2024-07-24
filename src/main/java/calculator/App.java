@@ -4,6 +4,11 @@ import java.util.Scanner;
 
 public class App {
     public static void main(String[] args) {
+
+        // 연산 결과를 저장하는 배열 생성 및 결과가 저장 될 때마다 카운팅 될 index 변수 생성
+        int[] arr = new int[10];
+        int index = 0;
+
         Scanner sc = new Scanner(System.in);
 
         String input;
@@ -44,6 +49,10 @@ public class App {
                     System.out.println("사칙연산 기호를 잘못 입력하셨습니다[+, -, *, /] 4개중 하나를 입력해주세요.");
             }
             System.out.println("결과: " + result);
+
+            // 결과를 index에 저장하고 index 후위증감연산 진행
+            arr[index] = result;
+            index++;
 
             System.out.println("더 계산하시겠습니까? (exit 입력 시 종료)");
             input = sc.next();
