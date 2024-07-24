@@ -1,12 +1,13 @@
 package calculator;
 
-import java.util.Scanner;
+import java.util.*;
 
 public class App {
     public static void main(String[] args) {
 
         // 연산 결과를 저장하는 배열 생성 및 결과가 저장 될 때마다 카운팅 될 index 변수 생성
-        int[] arr = new int[10];
+        // int[] arr = new int[10]; → Level-7번을 위해 주석처리
+        List<Integer> li = new ArrayList<Integer>();
         int index = 0;
 
         Scanner sc = new Scanner(System.in);
@@ -50,10 +51,24 @@ public class App {
             }
             System.out.println("결과: " + result);
 
+            /*
             // 결과를 index에 저장하고 index 후위증감연산 진행
             arr[index] = result;
-            index++;
 
+            → Level-7번을 위해 주석처리
+             */
+            // 결과를 li.add(result)를 통해 저장
+            li.add(result);
+
+            System.out.println("가장 먼저 저장된 연산 결과를 삭제하시겠습니까? (remove 입력 시 삭제)");
+            // remove라는 문자열을 입력받으면 li의 처음 값을 삭제 ex) 0값이 삭제되면 이제 1의값이 첫 번째가된다.
+            input = sc.next();
+            if(input.equals("remove")){
+                li.remove(index);
+                index++;
+            }
+
+            /*
             // 마지막 인덱스는 9이다. 만약 index가 증가 후 10이 되버리면 배열을 한칸씩 당기고 다음 결과값을 다시 9의 위치에 대입한다.
             if(index > arr.length - 1){
                 index = 9;
@@ -62,6 +77,8 @@ public class App {
                     arr[i] = arr[i + 1];
                 }
             }
+            → Level-7번을 위해 주석처리
+             */
 
             System.out.println("더 계산하시겠습니까? (exit 입력 시 종료)");
             input = sc.next();
