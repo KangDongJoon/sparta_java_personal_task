@@ -9,6 +9,7 @@ public class ArithmeticCalculator extends Calculator {
     private SubtractOperator subtractOperator;
     private MultiplyOperator multiplyOperator;
     private DivideOperator divideOperator;
+    private ModOperator modOperator;
 
     public ArithmeticCalculator(){
         super(); // result 초기화
@@ -16,6 +17,7 @@ public class ArithmeticCalculator extends Calculator {
         this.subtractOperator = new SubtractOperator();
         this.multiplyOperator = new MultiplyOperator();
         this.divideOperator = new DivideOperator();
+        this.modOperator = new ModOperator();
     }
 
 
@@ -41,9 +43,11 @@ public class ArithmeticCalculator extends Calculator {
             case "/":
                 result = divideOperator.operate(firstNum, secondNum);
                 break;
+            case "%":
+                result = modOperator.operate(firstNum, secondNum);
+                break;
             default:
-                throw new NotDefOpException("사칙연산 기호 중 하나를 입력해주세요.");
-
+                throw new NotDefOpException("사칙연산 기호 또는 나머지 연산자 중 하나를 입력해주세요.");
         }
         return result;
     }
