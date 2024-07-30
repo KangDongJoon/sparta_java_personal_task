@@ -3,7 +3,17 @@ package calculator;
 import java.util.*;
 
 public class Calculator {
-    List<Integer> resultList = new ArrayList<>();
+    private List<Integer> resultList = new ArrayList<>();
+
+    public List<Integer> getResultList(){
+        return resultList;
+    }
+
+    public void printResult(List<Integer> resultList){
+        for(int n : resultList){
+            System.out.println(n);
+        }
+    }
 
     public int calculate(int firstNum, int secondNum, String operator)
             throws NotDefOpException, ZeroDivException {
