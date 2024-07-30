@@ -1,37 +1,50 @@
 package calculator;
 
+import java.security.Key;
 import java.util.List;
 
 public class ArithmeticCalculator extends Calculator {
+
+    private AddOperator addOperator;
+    private SubtractOperator subtractOperator;
+    private MultiplyOperator multiplyOperator;
+    private DivideOperator divideOperator;
+
+    public ArithmeticCalculator(){
+        super(); // result 초기화
+        this.addOperator = new AddOperator();
+        this.subtractOperator = new SubtractOperator();
+        this.multiplyOperator = new MultiplyOperator();
+        this.divideOperator = new DivideOperator();
+    }
+
+
+    public void printResult(List<Integer> resultList) {
+        for (int n : resultList) {
+            System.out.println(n);
+        }
+    }
+
     public int calculate(int firstNum, int secondNum, String operator)
             throws NotDefOpException, ZeroDivException {
         int result = 0;
         switch (operator) {
             case "+":
-                result = firstNum + secondNum;
+                result = addOperator.operate(firstNum, secondNum);
                 break;
             case "-":
-                result = firstNum - secondNum;
+                result = subtractOperator.operate(firstNum, secondNum);
                 break;
             case "*":
-                result = firstNum * secondNum;
+                result = multiplyOperator.operate(firstNum, secondNum);
                 break;
             case "/":
-                if (secondNum == 0) {
-                    throw new ZeroDivException("0으로 나눌 수 없습니다.");
-                }
-                result = firstNum / secondNum;
+                result = divideOperator.operate(firstNum, secondNum);
                 break;
             default:
                 throw new NotDefOpException("사칙연산 기호 중 하나를 입력해주세요.");
 
         }
         return result;
-    }
-
-    public void printResult(List<Integer> resultList) {
-        for (int n : resultList) {
-            System.out.println(n);
-        }
     }
 }
