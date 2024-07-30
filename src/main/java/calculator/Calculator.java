@@ -4,9 +4,11 @@ import java.util.*;
 
 public class Calculator {
     private List<Integer> resultList;
+    private List<Double> circleAreaList;
 
     public Calculator(){
         resultList = new ArrayList<>();
+        circleAreaList = new ArrayList<>();
     }
 
     public List<Integer> getResultList(){
@@ -17,6 +19,20 @@ public class Calculator {
         for(int n : resultList){
             System.out.println(n);
         }
+    }
+
+    public List<Double> getCircleAreaList(){
+        return circleAreaList;
+    }
+
+    public void printCircleResult(List<Double> circleAreaList){
+        for(double n : circleAreaList){
+            System.out.println(n);
+        }
+    }
+
+    public double calculateCircleArea(int num){
+        return Math.pow(num, 2) * 3.14;
     }
 
     public int calculate(int firstNum, int secondNum, String operator)
