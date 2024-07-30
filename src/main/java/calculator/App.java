@@ -4,7 +4,8 @@ import java.util.*;
 
 public class App {
     public static void main(String[] args) throws ZeroDivException, NotDefOpException {
-        Calculator c1 = new Calculator();
+        CircleCalculator cc = new CircleCalculator();
+        ArithmeticCalculator ac = new ArithmeticCalculator();
         Scanner sc = new Scanner(System.in);
         int index = 0;
 
@@ -17,14 +18,14 @@ public class App {
                 System.out.print("반지름의 길이를 입력하세요:");
                 int num1 = sc.nextInt();
 
-                double result = c1.calculateCircleArea(num1);
+                double result = cc.calculateCircleArea(num1);
                 System.out.println("결과 : " + result);
-                c1.getCircleAreaList().add(result);
+                cc.getCircleAreaList().add(result);
 
                 System.out.println("결과 리스트를 출력 하시겠습니까? (y 입력 시 출력)");
                 input = sc.next();
                 if (input.equals("y")) {
-                    c1.printCircleResult(c1.getCircleAreaList());
+                    cc.printCircleResult(cc.getCircleAreaList());
                 }
 
                 System.out.println("더 계산하시겠습니까? (exit 입력 시 종료)");
@@ -40,9 +41,9 @@ public class App {
                 String operator = sc.next();
 
                 try {
-                    int result = c1.calculate(num1, num2, operator);
+                    int result = ac.calculate(num1, num2, operator);
                     System.out.println("결과 : " + result);
-                    c1.getResultList().add(result);
+                    ac.getResultList().add(result);
                 } catch (NotDefOpException e) {
                     System.out.println(e.getMessage());
                 } catch (ZeroDivException e) {
@@ -52,14 +53,14 @@ public class App {
                 System.out.println("가장 먼저 저장된 연산 결과를 삭제하시겠습니까? (remove 입력 시 삭제)");
                 input = sc.next();
                 if (input.equals("remove")) {
-                    c1.getResultList().remove(index);
+                    ac.getResultList().remove(index);
                     index++;
                 }
 
                 System.out.println("결과 리스트를 출력 하시겠습니까? (y 입력 시 출력)");
                 input = sc.next();
                 if (input.equals("y")) {
-                    c1.printResult(c1.getResultList());
+                    ac.printResult(ac.getResultList());
                 }
 
                 System.out.println("더 계산하시겠습니까? (exit 입력 시 종료)");
@@ -68,7 +69,5 @@ public class App {
         } else {
             System.out.println("1 또는 2중에 입력해주세요.");
         }
-
-
     }
 }
